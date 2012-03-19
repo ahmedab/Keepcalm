@@ -56,7 +56,6 @@ public class FileParser {
 			list.add(st.nextToken());
 		}
 		list.remove(list.size()-1);
-		System.out.println(list);
 		return list;
 	}
 }
