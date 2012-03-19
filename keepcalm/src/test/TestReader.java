@@ -1,6 +1,7 @@
 package test;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -15,7 +16,7 @@ public class TestReader extends TestCase {
 	
 	@Before
 	public void setUp() throws Exception {
-		r = new Reader("testdata.csv");
+		r = new Reader("src/test/testdata.csv");
 	}
 	
 	public void testGetInstance() {
@@ -31,7 +32,7 @@ public class TestReader extends TestCase {
 		try {
 			r.getInstance(99);
 			fail("Didn't throw NoSuchElementException.");
-		} catch (NoSuchElementException e) {
+		} catch (IndexOutOfBoundsException e) {
 			assertNotNull(e.getMessage());
 		}
 	}
@@ -42,27 +43,30 @@ public class TestReader extends TestCase {
 			fail("Didn't throw FileNotFoundException.");
 		} catch (FileNotFoundException e) {
 			assertNotNull(e.getMessage());
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail("Threw weird exception.");
 		}
 	}
 	
 	public void testReadInstance() {
 		ArrayList<String> d = r.getInstance(33);
-		assertEquals("High", d.get(1));
-		assertEquals("Low", d.get(2));
-		assertEquals("High", d.get(3));
+		assertEquals("High", d.get(0));
+		assertEquals("Low", d.get(1));
+		assertEquals("High", d.get(2));
+		assertEquals("Nominal", d.get(3));
 		assertEquals("Nominal", d.get(4));
-		assertEquals("Nominal", d.get(5));
+		assertEquals("Low", d.get(5));
 		assertEquals("Low", d.get(6));
-		assertEquals("Low", d.get(7));
+		assertEquals("Nominal", d.get(7));
 		assertEquals("Nominal", d.get(8));
 		assertEquals("Nominal", d.get(9));
 		assertEquals("Nominal", d.get(10));
-		assertEquals("Nominal", d.get(11));
+		assertEquals("High", d.get(11));
 		assertEquals("High", d.get(12));
-		assertEquals("High", d.get(13));
-		assertEquals("Nominal", d.get(14));
-		assertEquals("Low", d.get(15));
-		assertEquals("66.6", d.get(16));
-		assertEquals("352.8", d.get(17));
+		assertEquals("Nominal", d.get(13));
+		assertEquals("Low", d.get(14));
+		assertEquals("66.6", d.get(15));
+		assertEquals("352.8", d.get(16));
 	}
 }
