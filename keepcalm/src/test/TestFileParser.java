@@ -3,20 +3,16 @@ package test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
-
 import junit.framework.TestCase;
-
 import org.junit.Before;
-import static org.junit.Assert.*;
-import keepcalm.Reader;
+import keepcalm.FileParser;
 
-public class TestReader extends TestCase {
-	private Reader r;
+public class TestFileParser extends TestCase {
+	private FileParser r;
 	
 	@Before
 	public void setUp() throws Exception {
-		r = new Reader("src/test/testdata.csv");
+		r = new FileParser("src/test/testdata.csv");
 	}
 	
 	public void testGetInstance() {
@@ -39,7 +35,7 @@ public class TestReader extends TestCase {
 	
 	public void testNoSuchFile() {
 		try {
-			new Reader("idontexist.csv");
+			new FileParser("idontexist.csv");
 			fail("Didn't throw FileNotFoundException.");
 		} catch (FileNotFoundException e) {
 			assertNotNull(e.getMessage());

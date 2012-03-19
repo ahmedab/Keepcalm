@@ -3,17 +3,16 @@ package keepcalm;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class Reader {
+public class FileParser {
 	private String fileName;
 	private ArrayList<ArrayList> data;
 
-	public Reader(String fileName) throws IOException {
+	public FileParser(String fileName) throws IOException {
 		this.fileName = fileName;
 		data = new ArrayList<ArrayList>();
 
