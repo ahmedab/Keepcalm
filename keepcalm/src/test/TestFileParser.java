@@ -17,7 +17,7 @@ public class TestFileParser extends TestCase {
 	
 	public void testGetInstance() {
 		assertEquals("getInstance(1) returns the wrong size!", 17, r.getInstance(1).size());
-		assertEquals("getInstance(60)  returns the wrong size!", 17, r.getInstance(60).size());
+		assertEquals("getInstance(60) returns the wrong size!", 17, r.getInstance(60).size());
 		assertEquals("getInstance(33) returns the wrong size!", 17, r.getInstance(33).size());
 	}
 	
